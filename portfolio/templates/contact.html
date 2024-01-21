@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Контакты{% endblock %}
+{% block content %}
+<section class="section pb-5">
+   <div class="container">
+      <div class="row mb-5 align-items-end">
+         <div class="col-md-6" data-aos="fade-up">
+            <h2>Сообщение</h2>
+            <p class="mb-0">Есть вопросы по проекту, нужна консультация? Напишите мне, я отвечаю на все сообщения.
+            </p>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
+            <form action="{% url 'contact' %}" method="post" role="form" class="message-form">
+               {% csrf_token %}
+               <div class="row gy-3">
+                  <div class="col-md-6 form-group">
+                     <label for="name">Имя</label>
+                     <input type="text" name="name" class="form-control" id="name" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                     <label for="name">Email</label>
+                     <input type="email" class="form-control" name="email" id="email" required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                     <label for="name">Тема</label>
+                     <input type="text" class="form-control" name="subject" id="subject" required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                     <label for="name">Текст сообщения</label>
+                     <textarea class="form-control" name="message" cols="30" rows="10" required></textarea>
+                  </div>
+                  <div class="col-md-6 mt-0 form-group">
+                     <input type="submit" class="readmore d-block w-100" value="Отправить">
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="col-md-4 ml-auto order-2" data-aos="fade-up">
+            <ul class="list-unstyled">
+               <li class="mb-3">
+                  <strong class="d-block mb-1">Адрес</strong>
+                  <span>Москва, ул. Академика Королева, 12</span>
+               </li>
+               <li class="mb-3">
+                  <strong class="d-block mb-1">Телефон</strong>
+                  <span>+7 955 674 22 54</span>
+               </li>
+               <li class="mb-3">
+                  <strong class="d-block mb-1">Email</strong>
+                  <span>andrew_bolkonsky@mail.com</span>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</section>
+{% endblock %}

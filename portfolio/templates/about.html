@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Обо мне{% endblock %}
+{% block content %}
+<section class="section pb-5">
+   <div class="container">
+      <div class="row mb-5 align-items-end">
+         <div class="col-md-6" data-aos="fade-up">
+            <h2>Обо мне</h2>
+            <p class="mb-0">Привет, я &ndash; фронтендер и дизайнер {{ author.name}} {{ author.lastname }}.</p>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-4 ml-auto order-2" data-aos="fade-up">
+            <h3 class="h3 mb-4">Навыки</h3>
+            <ul class="list-unstyled">
+               {% for skill in author.skills.all %}
+               <li class="mb-3">
+                  <div class="d-flex mb-1">
+                     <strong>{{ skill.name }}</strong>&nbsp;&nbsp;&nbsp;
+                     <span class="ml-auto">{{ skill.level }}%</span>
+                  </div>
+                  <div class="progress custom-progress">
+                     <div class="progress-bar" role="progressbar" style="width: {{ skill.level }}%" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               </li>
+               {% endfor %}
+            </ul>
+         </div>
+         <div class="col-md-7 mb-5 mb-md-0" data-aos="fade-up">
+            <p><img src="{{ author.image.url }}" alt="Image" class="img-fluid"></p>
+            <p>{{ author.about|safe }}</p>
+            <p><a href="{% url 'contact' %}" class="readmore">Напишите мне</a></p>
+         </div>
+      </div>
+   </div>
+</section>
+{% endblock %}

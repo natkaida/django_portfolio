@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Детали реализации проекта{% endblock %}
+{% block content %} 
+<section class="section">
+   <div class="container">
+      <div class="row mb-4 align-items-center">
+         <div class="col-md-6" data-aos="fade-up">
+            <h3>Детали реализации проекта</h3>
+            <p>Подробнее о сложностях и особенностях проекте, использованных для его разработки инструментах и функциональности готового продукта.</p>
+         </div>
+      </div>
+   </div>
+   <div class="site-section pb-0">
+   <div class="container">
+      <div class="row align-items-stretch">
+         <div class="col-md-8" data-aos="fade-up">
+            <img src="{{ work.image.url }}" alt="Image" class="img-fluid">
+            <div class="pe-5">
+               <p>{{ work.description|safe }}</p>
+            </div>
+         </div>
+         <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
+            <div class="sticky-content">
+               <h3 class="h3">{{ work.title }}</h3>
+               <p class="mb-4"><span class="text-muted">{{ work.category }}</span></p>
+               <div class="mb-5">
+                  <p>Языки, библиотеки и фреймворки, которые я использовал при создании проекта.</p>
+               </div>
+               <h4 class="h4 mb-3">Технологический стек</h4>
+               {{ work.stack|safe }} 
+               <p><a href="{{ work.link }}" class="readmore">Сайт проекта</a></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<section class="section pt-0">
+   <div class="container">
+      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+         <div class="swiper-wrapper">
+            {% for testimony in testimonies %}
+            <div class="swiper-slide">
+               <div class="testimonial-wrap">
+                  <div class="testimonial">
+                     <img src="{{ testimony.image.url }}" alt="Image" class="img-fluid">
+                     <blockquote>
+                        <p>{{ testimony.text }}</p>
+                     </blockquote>
+                     <p>{{ testimony.name }} {{testimony.lastname }}</p>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+         <div class="swiper-pagination"></div>
+      </div>
+   </div>
+</section>
+{% endblock %}
